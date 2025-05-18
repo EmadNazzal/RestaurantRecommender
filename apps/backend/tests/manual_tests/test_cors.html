@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test CORS</title>
+</head>
+
+<body>
+    <h1>Test CORS</h1>
+    <button id="test-button">Test API Connection</button>
+    <pre id="result"></pre>
+
+    <script>
+        document.getElementById('test-button').onclick = function () {
+            fetch('http://localhost:8000/api/login/', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'wBerFS2N.7GRpRZp3H2OaWGLlge3XyK7nhx5J8EEu',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    key: 'value'
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    document.getElementById('result').textContent = 'Error: ' + error;
+                });
+        };
+    </script>
+</body>
+
+</html>

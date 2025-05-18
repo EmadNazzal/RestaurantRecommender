@@ -1,0 +1,75 @@
+version: '3.9'
+
+services:
+  backend:
+    container_name: backend
+    build: 
+      context: .
+      dockerfile: apps/docker/backend/Dockerfile
+    ports:
+      - "8000:8000"
+      - "8001:8001" 
+    env_file:
+      - ./local.env
+    depends_on:
+      - db
+    networks:
+      - backend-network
+
+  
+  db:
+    container_name: db
+    image: postgres:15-alpine
+    ports:
+      - "5433:5432"
+    env_file:
+      - ./local.env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    networks:
+      - backend-network
+
+  frontend:
+    container_name: frontend
+    build: 
+      context: .
+      dockerfile: apps/docker/frontend/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - node_modules:/apps/frontend/node_modules
+    env_file:
+      - ./local.env
+    networks:
+      - backend-network
+
+  nginx:
+    container_name: nginx
+    build: 
+      context: .
+      dockerfile: apps/docker/nginx/Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - static:/apps/backend/static
+      - /etc/letsencrypt/live/nibble.rest/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro
+      - /etc/letsencrypt/live/nibble.rest/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
+      # - ./apps/docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      # - ./apps/backend/static:/apps/backend/static
+
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - backend-network
+
+volumes:
+  db-data:
+  node_modules:
+  static:
+
+networks:
+  backend-network:

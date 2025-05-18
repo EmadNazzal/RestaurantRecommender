@@ -1,0 +1,6 @@
+{
+  "spellright.language": ["en_GB"],
+  "spellright.documentTypes": ["latex", "plaintext"],
+  "python.analysis.extraPaths": ["./apps/backend"],
+  "editor.wordWrapColumn": 100
+}

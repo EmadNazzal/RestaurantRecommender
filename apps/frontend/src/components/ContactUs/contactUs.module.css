@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
+.contactUsPage {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  background: url('../../assets/images/newyork-contactUS.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.waveWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none; /* Ensure waves do not interfere with clicks */
+}
+
+.wave {
+  position: absolute;
+  width: 200%;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.3); /* Semi-transparent white for the wave */
+  opacity: 0.7;
+  border-radius: 100%;
+  animation: wave 10s infinite linear;
+}
+
+.wave:nth-child(2) {
+  bottom: 50px;
+  animation: wave 8s infinite linear;
+}
+
+.wave:nth-child(3) {
+  bottom: 100px;
+  animation: wave 12s infinite linear;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(-50%) translateY(0%);
+  }
+  50% {
+    transform: translateX(50%) translateY(-20%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0%);
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.8); /* Slightly opaque white background for form readability */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  opacity: 0; /* Initially hidden */
+  transform: translateY(30px); /* Start from slightly below */
+  transition: opacity 1s ease, transform 1s ease; /* Smooth transition */
+}
+
+.fadeIn {
+  opacity: 1;
+  transform: translateY(0); /* Move to original position */
+}
+
+.contactUsText {
+  font-size: 36px;
+  color: #0277bd; /* Dark blue */
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contactUsPara {
+  font-size: 16px;
+  color: #01579b; /* Slightly lighter dark blue */
+  margin-bottom: 30px;
+}
+
+.formContainer {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  color: #01579b; /* Slightly lighter dark blue */
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #0288d1; /* Medium blue */
+  border-radius: 4px;
+  background-color: #f0f4f8;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  color: #0277bd; /* Dark blue */
+}
+
+.formGroup textarea {
+  resize: vertical;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #90caf9; /* Light blue placeholder */
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-color: #01579b; /* Slightly lighter dark blue on focus */
+}
+
+.formGroup button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #0277bd; /* Dark blue */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s;
+}
+
+.formGroup button:hover {
+  background-color: #01579b; /* Slightly lighter dark blue on hover */
+}
+
+.goToMainPage {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background-color: #0277bd; /* Dark blue */
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s;
+}
+
+.goToMainPage:hover {
+  background-color: #01579b; /* Slightly lighter dark blue on hover */
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  .formContainer {
+    padding: 0 10px;
+  }
+}

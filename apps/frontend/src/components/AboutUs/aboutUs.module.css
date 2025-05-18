@@ -1,0 +1,283 @@
+/* 
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.heroSection {
+  position: relative;
+  height: 400px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(5px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.heroContent h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.heroContent p {
+  font-size: 1.25rem;
+  max-width: 600px;
+}
+
+.sliderContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.navButton {
+  background: #003366;
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: background 0.3s ease;
+  border-radius: 10%;
+  z-index: 2;
+}
+
+.navButton:hover {
+  background: #0056b3;
+}
+
+.slider {
+  display: flex;
+  gap: 1rem;
+  transition: transform 0.5s ease;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.slider::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+
+/* 
+.teamMember {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 300px; /* Limit the maximum width */
+  /*  */
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.heroSection {
+  position: relative;
+  height: 400px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(5px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.heroContent h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.heroContent p {
+  font-size: 1.25rem;
+  max-width: 600px;
+}
+
+.teamContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.teamMember {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  flex: 1 1 200px;
+  max-width: 300px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  height: 380px;
+  margin: 10px;
+}
+
+.avatar {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 4px solid #0099ff;
+}
+
+.memberInfo {
+  padding: 1rem;
+}
+
+.memberInfo h2 {
+  font-size: 1.5rem;
+  color: #003366;
+  margin-bottom: 0.5rem;
+}
+
+.memberInfo p {
+  color: #666;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.socialLink {
+  color: #003366;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.socialLink:hover {
+  color: #0056b3;
+}
+
+.footer {
+  background: #003366;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.footerLink {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: text-decoration 0.3s ease;
+}
+
+.footerLink:hover {
+  text-decoration: underline;
+}
+
+.footerInfo {
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .teamContainer {
+    padding: 1rem;
+  }
+
+  .teamMember {
+    max-width: 200px;
+  }
+
+  .avatar {
+    height: 200px;
+  }
+
+  .memberInfo h2 {
+    font-size: 1.25rem;
+  }
+
+  .memberInfo p {
+    font-size: 0.875rem;
+  }
+}
+
+/* @media (max-width: 480px) {
+  .heroContent h1 {
+    font-size: 2rem;
+  }
+
+  .heroContent p {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .teamContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .teamMember {
+    width: 70%;
+    max-width: none;
+  }
+} */
+

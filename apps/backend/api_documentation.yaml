@@ -1,0 +1,926 @@
+openapi: 3.0.0
+info:
+  title: Restaurant Recommender API
+  description: |
+    This API provides information about API endpoints developed for the Restaurant Recommender application. It includes user registration, login, logout, password reset, and refreshes JWT token for security.
+
+    It provides various search API endpoints that allow users to navigate by choosing their favorite restaurant or neighborhood with nearby restaurants.
+    
+    It also provides a contact form for user inquiries.
+
+    ## JWT Authentication
+    This API uses JWT (JSON Web Tokens) for authentication. After logging in, users receive an access token and a refresh token.
+    The access token is used for accessing protected endpoints, and the refresh token is used to obtain a new access token when the old one expires.
+
+    ### Available Authorizations
+    **BearerAuth** (http, Bearer) - Use the "Authorize" button and enter your JWT token in the format `Bearer <your_jwt_access_token>`.
+
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000/api
+    description: Local server
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+
+  schemas:
+    Restaurant:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the restaurant
+        restaurant_name:
+          type: string
+        primary_cuisine:
+          type: string
+        price:
+          type: string
+        dress_code:
+          type: string
+        positive_aspects:
+          type: array
+          items:
+            $ref: '#/components/schemas/Aspect'
+        overall_rating:
+          type: number
+        latitude:
+          type: number
+        longitude:
+          type: number
+        zone:
+          type: string
+        telephone:
+          type: string
+        website:
+          type: string
+        food_rating:
+          type: number
+        service_rating:
+          type: number
+        value_rating:
+          type: number
+        ambience_rating:
+          type: number
+        noise_level:
+          type: string
+        photo_url:
+          type: array
+          items:
+            type: string
+        address:
+          type: string
+        location_id:
+          type: integer
+
+    Aspect:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the aspect
+        aspect:
+          type: string
+        count:
+          type: integer
+    Profile:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the profile
+        user:
+          type: string
+        first_name:
+          type: string
+        surname:
+          type: string
+        avatar:
+          type: string
+        slug:
+          type: string
+    ProfileInput:
+      type: object
+      properties:
+        first_name:
+          type: string
+        surname:
+          type: string
+        avatar:
+          type: string
+      required:
+        - first_name
+        - surname
+    Preference:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the preference
+        description:
+          type: string
+        type:
+          type: string
+    UserPreference:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the user preference
+        preference:
+          type: string
+    UserLikedRestaurant:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the user liked restaurant
+        restaurant:
+          type: string
+
+    UserSimilarity:
+      type: object
+      properties:
+        email:
+          type: string
+          description: Email of the similar user
+        similarity:
+          type: number
+          format: float
+          description: Similarity score
+
+    RestaurantRecommendation:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the recommended restaurant
+        name:
+          type: string
+          description: Name of the restaurant
+        primary_cuisine:
+          type: string
+          description: Primary cuisine of the restaurant
+        overall_rating:
+          type: number
+          format: float
+          description: Overall rating of the restaurant
+        latitude:
+          type: number
+          format: float
+          description: Latitude of the restaurant
+        longitude:
+          type: number
+          format: float
+          description: Longitude of the restaurant
+        zone:
+          type: string
+          description: Zone of the restaurant
+        telephone:
+          type: string
+          description: Telephone number of the restaurant
+        website:
+          type: string
+          description: Website of the restaurant
+        price:
+          type: string
+          description: Price range of the restaurant
+        food_rating:
+          type: number
+          format: float
+          description: Food rating of the restaurant
+        service_rating:
+          type: number
+          format: float
+          description: Service rating of the restaurant
+        value_rating:
+          type: number
+          format: float
+          description: Value rating of the restaurant
+        ambience_rating:
+          type: number
+          format: float
+          description: Ambience rating of the restaurant
+        noise_level:
+          type: string
+          description: Noise level of the restaurant
+        photo_url:
+          type: string
+          description: Photo URL of the restaurant
+        address:
+          type: string
+          description: Address of the restaurant
+        location_id:
+          type: integer
+          description: Location ID of the restaurant
+        dress_code:
+          type: string
+          description: Dress code of the restaurant
+        score:
+          type: number
+          format: float
+          description: Recommendation score
+        sort:
+          type: integer
+          description: Sort order of the recommendation
+
+security:
+  - BearerAuth: []
+
+paths:
+  /register/:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: User's email address (required)
+                first_name:
+                  type: string
+                  description: User's first name
+                surname:
+                  type: string
+                  description: User's surname
+                password:
+                  type: string
+                  format: password
+                  description: User's password (required, at least 8 characters with one digit)
+                password_confirm:
+                  type: string
+                  format: password
+                  description: Confirmation of user's password (required, must match password)
+                preferences:
+                  type: array
+                  items:
+                    type: integer
+                  description: List of preference IDs (required)
+              required:
+                - email
+                - password
+                - password_confirm
+                - preferences
+      responses:
+        '201':
+          description: User successfully registered
+        '400':
+          description: Bad request, validation error (e.g., passwords do not match or do not meet complexity requirements)
+
+  /login/:
+    post:
+      summary: Obtain JWT token pair
+      operationId: loginUser
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: john.doe@example.com
+                password:
+                  type: string
+                  example: password123
+      responses:
+        '200':
+          description: Token pair obtained successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access:
+                    type: string
+                    example: jwt-access-token
+                  refresh:
+                    type: string
+                    example: jwt-refresh-token
+        '401':
+          description: Invalid email or password
+
+  /token/refresh/:
+    post:
+      summary: Refresh JWT token
+      description: |
+        This endpoint is used to refresh an expired JWT access token. 
+        The refresh token obtained during login is required to get a new access token.
+      operationId: refreshToken
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refresh:
+                  type: string
+                  example: jwt-refresh-token
+      responses:
+        '200':
+          description: Token refreshed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access:
+                    type: string
+                    example: new-jwt-access-token
+        '401':
+          description: Invalid refresh token
+
+  /logout/:
+    post:
+      summary: Logout the user
+      description: |
+        This endpoint logs out the user and blacklists the JWT tokens, preventing them from being used again.
+        Both the access token and the refresh token must be provided.
+      operationId: logoutUser
+      tags:
+        - Authentication
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                access:
+                  type: string
+                  description: The access token
+                refresh:
+                  type: string
+                  description: The refresh token
+              required:
+                - access
+                - refresh
+      responses:
+        '204':
+          description: User logged out successfully
+        '400':
+          description: Tokens not provided
+
+  /reset-password/:
+    post:
+      summary: Request password reset
+      operationId: requestPasswordReset
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: The email address of the user requesting the password reset
+              required:
+                - email
+      responses:
+        '200':
+          description: Password reset email has been sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Password reset email has been sent.
+        '404':
+          description: No user found with this email
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: No user found with this email.
+
+  /reset-password/confirm/{uidb64}/{token}/:
+    post:
+      summary: Confirm password reset
+      operationId: confirmPasswordReset
+      parameters:
+        - name: uidb64
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                new_password:
+                  type: string
+                  example: new_password_1234
+      responses:
+        '200':
+          description: Password reset successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: string
+                    example: Password reset successfully.
+        '400':
+          description: Invalid token or user ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid token or user ID.
+
+  /contact-us/:
+    post:
+      summary: Submit a contact us form
+      operationId: contactUs
+      tags:
+        - Contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: string
+                  readOnly: true
+                  description: The email of the authenticated user (if authenticated)
+                name:
+                  type: string
+                  example: John Doe
+                email:
+                  type: string
+                  example: johndoe@example.com
+                subject:
+                  type: string
+                  example: I am not happy at all
+                message:
+                  type: string
+                  example: Should be happier
+      responses:
+        '201':
+          description: Contact form submitted successfully
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  user:
+                    type: string
+                    example: johndoe@example.com
+                  name:
+                    type: string
+                    example: John Doe
+                  email:
+                    type: string
+                    example: johndoe@example.com
+                  subject:
+                    type: string
+                    example: I am not happy at all
+                  message:
+                    type: string
+                    example: Should be happier
+                  created_at:
+                    type: string
+                    format: date-time
+                    example: 2023-01-01T12:00:00Z
+                    
+  /all-restaurants/:
+    get:
+      summary: Retrieve all restaurants with detailed information
+      description: Retrieve all restaurants to be displayed on the map.
+      tags:
+        - Restaurant Search
+      parameters:
+        - name: restaurant_name
+          in: query
+          required: false
+          schema:
+            type: string
+            example: Sushi
+          description: Query to filter restaurants by name.
+      responses:
+        '200':
+          description: Successfully retrieved all restaurants
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Restaurant'
+        '400':
+          description: Invalid input
+
+  /profiles/:
+    get:
+      summary: Get all profiles
+      tags:
+        - Profiles
+      responses:
+        '200':
+          description: A list of profiles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Profile'
+    post:
+      summary: Create a new profile
+      tags:
+        - Profiles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileInput'
+      responses:
+        '201':
+          description: Profile created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+  /profiles/{profile_id}/:
+    get:
+      summary: Get a specific profile
+      tags:
+        - Profiles
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: ID of the profile
+      responses:
+        '200':
+          description: A single profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        '404':
+          description: Profile not found
+    put:
+      summary: Update a profile
+      tags:
+        - Profiles
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: ID of the profile
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProfileInput'
+      responses:
+        '200':
+          description: Profile updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        '404':
+          description: Profile not found
+    delete:
+      summary: Delete a profile
+      tags:
+        - Profiles
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: ID of the profile
+      responses:
+        '204':
+          description: Profile deleted successfully
+        '404':
+          description: Profile not found
+
+  /users/similar/:
+    get:
+      summary: Find similar users
+      tags:
+        - User Search
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Successfully retrieved similar users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserSimilarity'
+        '401':
+          description: Unauthorized, missing or invalid token
+
+  /restaurants/recommend/:
+    get:
+      summary: Recommend restaurants based on user preferences
+      tags:
+        - Restaurant Recommendation
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Successfully retrieved restaurant recommendations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestaurantRecommendation'
+        '401':
+          description: Unauthorized, missing or invalid token
+
+  /{time}/zone/:
+    get:
+      summary: Predict Busyness of Zones in Manhattan
+      description: |
+        View for retrieving machine learning predictions, predicting busyness of zones in Manhattan.
+        Input is a dynamic time.
+
+        This view allows users to choose a date and time to detect busyness in Manhattan 
+        according to the Manhattan zones from the restaurant table.
+      parameters:
+        - name: time
+          in: path
+          required: true
+          description: The specific date and time in '%Y-%m-%dT%H:%M:%S' format for which the prediction is made.
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Successful prediction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  predictions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          description: ID of the prediction
+                        zone:
+                          type: string
+                        predicted_value:
+                          type: number
+                          format: float
+              example:
+                predictions:
+                  - id: "0e37e1fe-303e-4c2b-b71d-368f4cb773ac"
+                    zone: "Lenox Hill West"
+                    predicted_value: 1.2920453548431396
+                  - id: "48007994-6372-4b90-ad9c-c4fb1c562395"
+                    zone: "TriBeCa/Civic Center"
+                    predicted_value: 0.2693794369697571
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: "Error message"
+
+  /preferences/:
+    get:
+      summary: Retrieve all preferences
+      tags:
+        - Preferences
+      responses:
+        '200':
+          description: Successfully retrieved preferences
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Preference'
+
+  /user-preferences/:
+    get:
+      summary: Retrieve all user preferences
+      tags:
+        - User Preferences
+      responses:
+        '200':
+          description: Successfully retrieved user preferences
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserPreference'
+    post:
+      summary: Create a new user preference
+      tags:
+        - User Preferences
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                preference:
+                  type: integer
+                  description: ID of the preference to add
+              required:
+                - preference
+      responses:
+        '201':
+          description: User preference created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPreference'
+  /user-preferences/{preference_id}/:
+    get:
+      summary: Retrieve a specific user preference
+      tags:
+        - User Preferences
+      parameters:
+        - name: preference_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: ID of the user preference
+      responses:
+        '200':
+          description: Successfully retrieved user preference
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPreference'
+        '404':
+          description: User preference not found
+    put:
+      summary: Update a specific user preference
+      tags:
+        - User Preferences
+      parameters:
+        - name: preference_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: ID of the user preference
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                preference:
+                  type: integer
+                  description: ID of the preference to update
+              required:
+                - preference
+      responses:
+        '200':
+          description: User preference updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPreference'
+        '404':
+          description: User preference not found
+    delete:
+      summary: Delete a specific user preference
+      tags:
+        - User Preferences
+      parameters:
+        - name: preference_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: ID of the user preference
+      responses:
+        '204':
+          description: User preference deleted successfully
+        '404':
+          description: User preference not found
+
+  /user-liked-restaurants/:
+    get:
+      summary: Retrieve all user liked restaurants
+      tags:
+        - User Liked Restaurants
+      responses:
+        '200':
+          description: Successfully retrieved user liked restaurants
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserLikedRestaurant'
+    post:
+      summary: Create a new user liked restaurant
+      tags:
+        - User Liked Restaurants
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                restaurant:
+                  type: integer
+                  description: ID of the restaurant to add
+              required:
+                - restaurant
+      responses:
+        '201':
+          description: User liked restaurant created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLikedRestaurant'
+  /user-liked-restaurants/{user_liked_restaurant_id}/:
+    delete:
+      summary: Delete a specific user liked restaurant
+      tags:
+        - User Liked Restaurants
+      parameters:
+        - name: user_liked_restaurant_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: ID of the user liked restaurant
+      responses:
+        '204':
+          description: User liked restaurant deleted successfully
+        '404':
+          description: User liked restaurant not found

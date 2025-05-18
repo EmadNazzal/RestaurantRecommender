@@ -1,0 +1,48 @@
+# Build output directories and files
+dist/
+build/
+coverage/
+**/*.css
+
+# Node.js directories
+node_modules/
+
+# Vite.js directories
+.vite/
+
+# Generated directories
+public/
+static/
+
+# MkDocs directories
+site/
+
+# Docker directories
+docker/
+
+# JavaScript test files
+**/*.test.js
+**/*.spec.js
+
+# JMeter test files
+*.jmx
+*.jtl
+
+# Locust test files
+*.locustfile
+
+# Cypress test files
+cypress/
+
+# Selenium test files
+selenium/
+
+# Tailwind CSS files
+tailwind.config.js
+
+# Postman collections
+*.postman_collection.json
+
+# Package files
+package.json
+package-lock.json

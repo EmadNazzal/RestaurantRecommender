@@ -1,0 +1,111 @@
+/* RestaurantInfoWindow.module.css */
+.card {
+  position: relative;
+  max-width: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cardContent {
+  padding: 16px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+/* .imageContainer {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+} */
+
+.imageSlide img {
+  width: 100%;
+  height: auto;
+}
+
+.infoContainer {
+  margin-top: 16px;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.detail {
+  margin-bottom: 8px;
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+}
+
+.busynessScore {
+  margin: 16px 0;
+}
+
+.aspects {
+  margin-top: 16px;
+}
+
+.aspectChip {
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+.btnHolderForTwo {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.exploreButton {
+  flex-grow: 1;
+  margin-right: 8px;
+}
+
+.compareButton {
+  flex-grow: 1;
+}
+/**************************************************************************************/
+
+.imageContainer {
+  position: relative;
+}
+
+.slick-dots {
+  bottom: 0px; /* Adjust based on your layout */
+}
+
+.slick-dots li button:before {
+  font-size: 12px; /* Adjust based on your design */
+  color: #fff; 
+}
+.slick-dots .slick-active button:before {
+  color: #1929b6; 
+}
+
+.slick-prev, .slick-next {
+  width: 30px; 
+  height: 30px; 
+  z-index: 1; 
+}
+
+.slick-prev {
+  left: 10px; 
+}
+
+.slick-next {
+  right: 10px; 
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 24px; 
+  color: #000;
+}

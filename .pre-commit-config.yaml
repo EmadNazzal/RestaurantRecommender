@@ -1,0 +1,89 @@
+default_install_hook_types: [pre-push]
+default_stages: [pre-push]
+repos:
+  # --- Linters and Formatters ------------------------------------------------
+  # # Ruff.
+  # - repo: https://github.com/astral-sh/ruff-pre-commit
+  #   rev: v0.4.9
+  #   hooks:
+  #     - id: ruff
+  #       name: Ruff Lint
+  #       language: python
+  #       types_or: [python]
+  #       args: [--fix, --config, pyproject.toml]
+  #       require_serial: true
+  #     - id: ruff-format
+  #       name: Ruff Format
+  #       types_or: [python]
+  #       args: [--config, pyproject.toml]
+  #       require_serial: true
+  # # Mypy.
+  # # - repo: https://github.com/pre-commit/mirrors-mypy
+  # #   rev: v1.10.0
+  # #   hooks:
+  # #     - id: mypy
+  # #       name: mypy
+  # #       types_or: [python]
+  # #       args: [--config-file, pyproject.toml]
+  # # ESLint.
+  # - repo: https://github.com/pre-commit/mirrors-eslint
+  #   rev: v8.56.0
+  #   hooks:
+  #     - id: eslint
+  #       name: ESLint
+  #       additional_dependencies:
+  #         - eslint@^8.57.0
+  #         - eslint-config-airbnb
+  #         - eslint-config-next
+  #         - eslint-config-prettier
+  #         - eslint-plugin-import
+  #         - eslint-plugin-jsdoc
+  #         - eslint-plugin-jsonc
+  #         - eslint-plugin-jsx-a11y
+  #         - eslint-plugin-react
+  #         - eslint-plugin-react-hooks
+  #       types_or: [javascript, json, jsx, css]
+  #       args: [--fix, --config, .eslintrc.js, --ignore-path, .eslintignore]
+  # # Prettier.
+  # - repo: https://github.com/pre-commit/mirrors-prettier
+  #   rev: "v4.0.0-alpha.8"
+  #   hooks:
+  #     - id: prettier
+  #       name: Prettier
+  #       types_or: [javascript, json, jsx, yaml, html, css]
+  #       args: [--config, .prettierrc.json, --ignore-path, .prettierignore]
+  # # Stylelint.
+  # - repo: local
+  #   hooks:
+  #     - id: stylelint
+  #       name: Stylelint
+  #       language: node
+  #       additional_dependencies:
+  #         - stylelint@^16.6.1
+  #         - stylelint-config-standard
+  #       entry: stylelint
+  #       types_or: [css]
+  #       args:
+  #         [--fix, --config, .stylelintrc.json, --ignore-path, .stylelintignore]
+  # # Markdownlint.
+  # - repo: https://github.com/igorshubovych/markdownlint-cli
+  #   rev: v0.41.0
+  #   hooks:
+  #     - id: markdownlint
+  #       name: Markdownlint
+  #       types_or: [markdown]
+  #       args: [--config, .markdownlint.json]
+  # --- Repository Management ------------------------------------------------
+  # clean-dotenv.
+  # - repo: https://github.com/hija/clean-dotenv
+  #   rev: v0.0.7
+  #   hooks:
+  #     - id: clean-dotenv
+  #       name: clean-dotenv
+  # --- Security -------------------------------------------------------------
+  - repo: https://github.com/sirwart/ripsecrets
+    rev: v0.1.8
+    hooks:
+      - id: ripsecrets
+        name: ripsecrets
+        files: ^.*$

@@ -1,0 +1,82 @@
+/* regions.module.css */
+.regionsContainer {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f7f7f7; /* Light background color */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .regionsContainer h3 {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #007bff; /* Primary color */
+    text-align: center;
+  }
+  
+  .regionsContainer label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #007bff; /* Primary color */
+  }
+  
+  .regionsContainer select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #007bff; 
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+  }
+  
+  .regionsContainer select:focus {
+    border-color: #35b7ef; 
+    outline: none;
+  }
+  .regionsContainer ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column; 
+  }
+  
+  
+  .regionsContainer li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    width: 100%; 
+  }
+  
+  .regionsContainer li span {
+    flex: 1; 
+    text-align: left; 
+  }
+  
+  .regionsContainer li:last-child {
+    border-bottom: none;
+  }
+  
+  .regionsContainer .loading,
+  .regionsContainer .error {
+    text-align: center;
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+  
+  .regionsContainer .loading {
+    color: #007bff; /* Loading color */
+  }
+  
+  .regionsContainer .error {
+    color: #d9534f; /* Error color */
+  }
+  

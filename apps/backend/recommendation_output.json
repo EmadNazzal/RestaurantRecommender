@@ -1,0 +1,25 @@
+[
+    {
+        "id": 34020,
+        "name": "Westville - Chelsea",
+        "primary_cuisine": "American",
+        "overall_rating": 4.6,
+        "latitude": 40.7396075,
+        "longitude": -73.9991851,
+        "zone": "Flatiron",
+        "telephone": "(212) 924-2223",
+        "website": "http://www.westvillenyc.com/",
+        "price": "$30 and under",
+        "food_rating": 4.5,
+        "service_rating": 4.6,
+        "value_rating": 4.5,
+        "ambience_rating": 4.3,
+        "noise_level": "Moderate",
+        "photo_url": "[\"https://resizer.otstatic.com/v2/photos/wide-large/1/51182043.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/1/42329841.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/1/51510014.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/2/56979490.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/2/56980286.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/3/56980287.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/3/56980288.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/3/56979489.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/1/56980283.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/1/64126881.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/1/60066494.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/2/56979488.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/3/56980285.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/3/56978832.jpg\", \"https://resizer.otstatic.com/v2/photos/wide-large/1/52514240.jpg\"]",
+        "address": "88 Seventh Avenue, NY 10011",
+        "location_id": 90,
+        "dress_code": "Casual Dress",
+        "score": 0.5773502691896257,
+        "sort": 1
+    }
+]

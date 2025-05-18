@@ -1,0 +1,76 @@
+
+.parentContainer {
+  background-image: url('../../assets/images/manageAccountBk.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; /* Adjust the position as needed */
+  margin: 0;
+  padding: 0;
+  /* background-attachment: fixed; */
+  height: 100vh;
+  position: relative;;
+}
+
+.container {
+  padding: 30px;
+  background-color: #ffffffbd;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  text-align: center;
+  color: #1976d2;
+  margin-bottom: 20px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.avatarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarInput {
+  margin-left: 20px;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.restrictedContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff90;
+  padding: 30px;
+  border-radius: 7px;
+}
+
+.restrictedTitle {
+
+  color: #1976d2;
+  padding: 10px;
+}
+
+.restrictedMessage {
+  text-align: center;
+  color: red;
+}

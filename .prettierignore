@@ -1,0 +1,29 @@
+# Build output directories
+dist/
+build/
+coverage/
+
+# Node.js directories
+node_modules/
+
+# Vite.js directories
+.vite/
+
+# Generated directories
+public/
+static/
+
+# MkDocs output
+site/
+
+# Docker directories
+docker/
+
+# JavaScript directories
+.eslintcache/
+**/*.min.js
+**/*.bundle.js
+
+# Generated files
+*.lock
+*.log

@@ -1,0 +1,57 @@
+# Build output directories
+dist/
+build/
+coverage/
+
+# Node.js directories
+node_modules/
+
+# Vite.js directories
+.vite/
+
+# Generated directories
+public/
+static/
+
+# MkDocs directories
+site/
+
+# Docker directories
+docker/
+
+# JavaScript directories
+.eslintcache/
+**/*.js
+**/*.jsx
+**/*.ts
+**/*.tsx
+
+# Ignore CSS-in-JS and inline styles in React components
+**/*.css.js
+**/*.css.ts
+**/*.css.tsx
+
+# Postman collections
+*.postman_collection.json
+
+# JMeter test files
+*.jmx
+*.jtl
+
+# Locust test files
+*.locustfile
+
+# Cypress test files
+cypress/
+
+# Selenium test files
+selenium/
+
+# Vault test files
+.vault/
+
+# JMeter test files
+jmeter/
+
+# Tailwind CSS configuration file
+tailwind.config.js

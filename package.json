@@ -1,0 +1,104 @@
+{
+  "name": "nibbler",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Nibbler is a Manhattan based personalised restaurant recommendation service.",
+  "homepage": "https://github.com/chugalugzzz/SummerProject#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chugalugzzz/SummerProject.git"
+  },
+  "author": "Team 7",
+  "contributors": [
+    {
+      "name": "Emma Nolan",
+      "url": "https://github.com/emma-nolan"
+    },
+    {
+      "name": "Riin Kaljurand",
+      "url": "https://github.com/RiinKal"
+    },
+    {
+      "name": "Han Zheng",
+      "url": "https://github.com/chugalugzzz"
+    },
+    {
+      "name": "Carlo Finnegan",
+      "url": "https://github.com/Carlofinnegan"
+    },
+    {
+      "name": "Emad Nazzal",
+      "url": "https://github.com/emadNazzal"
+    }
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "deploy": "npm run test && npm run build && npx serve dist",
+    "test": "jest",
+    "commit": "git-cz"
+  },
+  "dependencies": {
+    "nibbler": "^0.2.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@googlemaps/markerclusterer": "^2.5.3",
+    "@heroicons/react": "^2.1.5",
+    "@mui/icons-material": "^5.15.20",
+    "@mui/material": "^5.15.20",
+    "@vis.gl/react-google-maps": "^1.1.0",
+    "axios": "^1.7.2",
+    "configcat-js": "^9.5.0",
+    "dotenv": "^16.4.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.1",
+    "use-immer": "^0.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "babel-jest": "^29.7.0",
+    "babel-plugin-transform-vite-meta-env": "^1.0.3",
+    "daisyui": "^4.12.10",
+    "cypress": "^13.12.0",
+    "cz-git": "^1.9.3",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "htmlhint": "^1.1.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "markdownlint": "^0.34.0",
+    "prettier": "3.3.2",
+    "stylelint": "^16.6.1",
+    "stylelint-config-standard": "^36.0.1",
+    "tailwindcss": "^3.4.4",
+    "vite": "^5.3.1",
+    "@eslint/js": "^9.5.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-cypress": "^3.3.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsdoc": "^48.4.0",
+    "eslint-plugin-jsonc": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "globals": "^15.6.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  }
+}

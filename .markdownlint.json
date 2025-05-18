@@ -1,0 +1,35 @@
+{
+  "default": true,
+  "blanks-around-fences": false,
+  "blanks-around-lists": false,
+  "code-fence-style": false,
+  "code-block-style": {
+    "style": "fenced"
+  },
+  "commands-show-output": false,
+  "emphasis-style": {
+    "style": "asterisk"
+  },
+  "fenced-code-language": false,
+  "first-line-h1": false,
+  "heading-start-left": false,
+  "hr-style": false,
+  "line-length": false,
+  "no-alt-text": false,
+  "no-bare-urls": false,
+  "no-blanks-blockquote": false,
+  "no-duplicate-heading": false,
+  "no-emphasis-as-heading": false,
+  "no-hard-tabs": false,
+  "no-inline-html": false,
+  "no-space-in-code": false,
+  "ol-prefix": false,
+  "required-headings": false,
+  "single-title": false,
+  "strong-style": {
+    "style": "asterisk"
+  },
+  "ul-indent": {
+    "indent": 4
+  }
+}

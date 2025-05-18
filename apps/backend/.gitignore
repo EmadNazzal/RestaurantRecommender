@@ -1,0 +1,364 @@
+# ===========================================================================
+# Reference: https://www.gitignore.io
+# ===========================================================================
+
+# ---------------------------------------------------------------------------
+# General
+# ---------------------------------------------------------------------------
+
+# --- Environments ---
+
+.env
+.venv
+env.bak/
+env/
+ENV/
+venv.bak/
+venv/
+local.env
+run.bat
+
+# --- ssh ---
+**/.ssh/*_id_*
+**/.ssh/id_*
+**/.ssh/known_hosts
+/entrypoint.sh
+
+# --- Custom Scripts ---
+update_requirements.py
+requierments_checker_script.py
+
+# ===========================================================================
+# IDEs
+# ---------------------------------------------------------------------------
+
+# --- JetBrains ---
+.idea/*
+!.idea/codeStyles
+!.idea/runConfigurations
+*.iws
+atlassian-ide-plugin.xml
+cmake-build-*/
+com_crashlytics_export_strings.xml
+crashlytics-build.properties
+crashlytics.properties
+fabric.properties
+out/
+
+# --- Visual Studio Code ---
+.vscode/*
+!.vscode/*.code-snippets
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+.history/
+.ionide
+*.vsix
+
+# ---------------------------------------------------------------------------
+# Languages
+# ---------------------------------------------------------------------------
+
+# --- Python and Django ---
+__pycache__/
+__pypackages__/
+.cache/
+.coverage*
+.dmypy.json
+.eggs/
+.hypothesis/
+.installed.cfg
+.ipynb_checkpoints/
+.mypy_cache/
+.nox/
+.pdm.toml
+.pybuilder/
+.pyre/
+.pytest_cache/
+.Python
+.pytype/
+.ropeproject/
+.ruff_cache/
+.scrapy/
+.spyderproject/
+.spyproject/
+.tox/
+.webassets-cache/
+*.cover
+*.egg
+*.egg-info/
+*.manifest
+*.mo
+*.pot
+*.py,cover
+*.py[cod]
+*.sage.py
+*.so
+*.spec
+*$py.class
+/site/
+build/
+celerybeat-schedule
+celerybeat.pid
+celery.log
+cover/
+coverage.xml
+cython_debug/
+db.sqlite3
+db.sqlite3-journal
+develop-eggs/
+dist/
+dmypy.json
+docs/_build/
+downloads/
+eggs/
+instance/
+instance/*
+ipython_config.py
+lib/
+htmlcov/
+lib64/
+local_settings.py
+MANIFEST
+nosetests.xml
+parts/
+pip-delete-this-directory.txt
+pip-log.txt
+poetry.toml
+profile_default/
+pyrightconfig.json
+sdist/
+share/python-wheels/
+target/
+var/
+wheels/
+mydocs/
+staticfiles/
+*.django.log
+
+# --- CSS ---
+*.css.map
+
+# --- HTML ---
+#*.html
+
+# --- JavaScript ---
+*.js.map
+
+# --- Node.js and NextJS ---
+#logs/
+#*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+pids
+*.pid
+*.seed
+*.pid.lock
+lib-cov
+coverage
+*.lcov
+.nyc_output
+.grunt
+bower_components
+.lock-wscript
+build/Release
+node_modules/
+jspm_packages/
+web_modules/
+*.tsbuildinfo
+.npm
+.eslintcache
+.stylelintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+.node_repl_history
+*.tgz
+.yarn-integrity
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+.cache/
+.parcel-cache
+.next
+out
+.nuxt
+dist
+.vuepress/dist
+.temp
+.docusaurus
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+.vscode-test
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+.webpack/
+.svelte-kit
+
+# ---------------------------------------------------------------------------
+# Tools and Frameworks
+# ---------------------------------------------------------------------------
+
+# --- Tailwind CSS ---
+public/css/
+dist/css/
+public/build/
+dist/build/
+
+# --- Vite.js ---
+dist/
+.vite/
+node_modules/.vite/
+
+# --- Jupyter Notebook ---
+.ipynb_checkpoints
+*.ipynb-meta
+.jupyter/
+
+# --- React ---
+.DS_*
+#logs/
+#*.log
+**/*.backup.*
+**/*.back.*
+node_modules
+bower_components
+*.sublime*
+psd
+thumb
+sketch
+
+# --- Cypress ---
+cypress/screenshots/
+cypress/videos/
+cypress/reports/
+cypress/.cache/
+
+# --- Celery ---
+*.bak
+*.dat
+*.dir
+
+# ---------------------------------------------------------------------------
+# Operating Systems
+# ---------------------------------------------------------------------------
+
+# --- Linux ---
+.nfs*
+.Trash-*
+*~
+
+# --- MacOS ---
+._*
+.AppleDouble
+.DS_Store
+.LSOverride
+Icon
+
+# --- Windows ---
+*.stackdump
+ehthumbs_vista.db
+ehthumbs.db
+Thumbs.db
+Thumbs.db:encryptable
+
+# ---------------------------------------------------------------------------
+# Bash
+# ---------------------------------------------------------------------------
+
+# Bash history
+.bash_history
+
+# Bash session files
+.bash_sessions
+
+# ---------------------------------------------------------------------------
+# Database
+# ---------------------------------------------------------------------------
+
+# --- PostgreSQL ---
+*.sql
+*.dump
+*.pg_dump
+*.pg_dumpall
+*.pg_restore
+
+# --- SQLite ---
+db.sqlite3
+*.sqlite3
+
+# ===========================================================================
+# Code Quality Platform
+# ---------------------------------------------------------------------------
+
+# --- SonarQube ---
+.sonar/
+.sonarlint/
+.sonarsource/
+.scannerwork/
+
+# ---------------------------------------------------------------------------
+# Architectural style
+# ---------------------------------------------------------------------------
+
+# --- REST framework ---
+*.rest
+/rest/
+
+# ---------------------------------------------------------------------------
+# Security Tools
+# ---------------------------------------------------------------------------
+
+# --- OWASP ZAP ---
+zap.log
+zap-*.session
+zap-*.report
+
+# ---------------------------------------------------------------------------
+# Performance Testing Tools
+# ---------------------------------------------------------------------------
+
+# --- Apache JMeter ---
+*.jtl
+*.log
+# *.csv
+*.tmp
+
+# --- Locust ---
+# locust.log
+*.locust
+# *.csv
+
+# --- Selenium ---
+selenium.log
+screenshots/
+*.report
+
+# ---------------------------------------------------------------------------
+# Documentation generator
+# ---------------------------------------------------------------------------
+
+# --- MkDocs ---
+site/
+
+# --- Hidden files ---
+# .*
+
+# --- Markdown lint ---
+.markdownlint.jsonc
+
+# --- Chrome Driver ---
+/tests/chromedriver.exe

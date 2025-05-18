@@ -1,0 +1,15 @@
+/* * {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("../../assets/images/bk-image.png") lightgray 50% / cover
+    no-repeat;
+} */
+
+.mainContainer {
+  padding-right: 45px;
+  padding-left: 45px;
+}

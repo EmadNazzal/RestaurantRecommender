@@ -1,0 +1,105 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow-x: hidden; 
+  overflow-y: auto; 
+  max-height: 75vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+  justify-content: center; 
+  max-height: 75vh; 
+  overflow-y: auto; 
+}
+
+.restaurantCard {
+  width: 100%; 
+  max-width: 250px; 
+  height: 350px; 
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* .pageButton {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pageButton:hover {
+  background-color: #f0f0f0;
+}
+
+.activePage {
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+} */
+
+.mainContainer::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+.mainContainer::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+.mainContainer::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners of the scrollbar thumb */
+}
+
+.mainContainer::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar thumb when hovered */
+}
+
+
+@media (max-width: 1000px) {
+  
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    max-height: 30vh;
+  }
+  
+ 
+    
+    .container {
+      display: inline;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        /* white-space: nowrap; */
+        padding: 2px 7%;
+    
+  
+  }
+}

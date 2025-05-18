@@ -1,0 +1,83 @@
+{
+  "arrowParens": "always",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "embeddedLanguageFormatting": "auto",
+  "endOfLine": "lf",
+  "experimentalTernaries": false,
+  "htmlWhitespaceSensitivity": "css",
+  "insertPragma": false,
+  "jsxSingleQuote": false,
+  "printWidth": 80,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "requirePragma": false,
+  "semi": true,
+  "singleAttributePerLine": false,
+  "singleQuote": false,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "useTabs": false,
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx"],
+      "options": {
+        "parser": "babel",
+        "singleQuote": false
+      }
+    },
+    {
+      "files": ["*.node.js"],
+      "options": {
+        "parser": "babel",
+        "printWidth": 100,
+        "singleQuote": true,
+        "trailingComma": "all"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "options": {
+        "parser": "html",
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ["*.css"],
+      "options": {
+        "parser": "css",
+        "semi": false,
+        "singleQuote": true,
+        "trailingComma": "none"
+      }
+    },
+    {
+      "files": ["*.tailwind.css"],
+      "options": {
+        "parser": "css",
+        "semi": false,
+        "singleQuote": true,
+        "trailingComma": "none"
+      }
+    },
+    {
+      "files": ["*.md"],
+      "options": {
+        "parser": "markdown",
+        "proseWrap": "never",
+        "semi": false,
+        "tabWidth": 4,
+        "trailingComma": "none"
+      }
+    },
+    {
+      "files": ["*.json", "*.jsonc", "*.json5"],
+      "options": {
+        "parser": "json",
+        "semi": false,
+        "quoteProps": "preserve",
+        "trailingComma": "none"
+      }
+    }
+  ]
+}

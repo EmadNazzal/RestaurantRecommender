@@ -1,0 +1,68 @@
+.first {
+ 
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mapComponent {
+  
+}
+
+.helpButton {
+  position: fixed !important; 
+  bottom: 250px !important; 
+  left: 10px !important;
+  z-index: 45454545 !important; 
+  background-color: #2e6ce8 !important; 
+  width: 40px !important; 
+  height: 40px !important; 
+  color: white !important;
+}
+
+.helpButton:hover {
+  background-color: #1d4db8 !important; 
+}
+
+
+
+
+.MapAndLeftDivContainer {
+  display: flex;
+  width: 100%;
+}
+
+.leftSideDiv {
+  width: 40%;
+  background-color: #f7f7f7;  
+  padding-left: 45px;
+  padding-top: 20px;
+}
+
+.sidePanelAndMainPanel {
+  height: 83vh;
+  scroll-behavior: smooth;
+  /* overflow-y: auto; */
+}
+
+@media (max-width: 1000px) {
+  .MapAndLeftDivContainer {
+    display: flex;
+    
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .leftSideDiv {
+    width: 100%;
+    background-color: #f7f7f7;  
+    padding-left: 15px;
+    /* padding-top: 20px; */
+    height: 40vh;
+  }
+  
+
+  
+}
