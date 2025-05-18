@@ -99,11 +99,10 @@ notification alert arises when a restaurant is added.
 
 ## Authors
 
-- [Emma Nolan](https://github.com/emma-nolan)
-- [Riin Kaljurand](https://github.com/RiinKal)
+- [Emad Nazzal](https://github.com/emadNazzal)
 - [Han Zheng](https://github.com/chugalugzzz)
 - [Carlo Finnegan](https://github.com/Carlofinnegan)
-- [Emad Nazzal](https://github.com/emadNazzal)
+
 
 ## Contributors
 
